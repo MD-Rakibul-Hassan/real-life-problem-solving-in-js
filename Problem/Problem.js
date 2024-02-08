@@ -58,3 +58,24 @@ function password(obj) {
 }
 
 
+function monthlySavings(arr , livingCost) {
+      if ((Array.isArray(arr)) && (typeof livingCost === 'number' && !isNaN(livingCost))) {
+            let  bankTax = 0;
+            let totalMoney = 0;
+            for (value of arr) {
+                  if (value >= 3000) {
+                        bankTax += 20 / 100 * value;  
+                  }
+                  totalMoney += value;
+            }
+            const totaLivingCost = bankTax + livingCost;
+            const totalSavings = totalMoney - totaLivingCost;
+            if (totalSavings < 0) {
+                  return "earn more";
+            }else {
+                  return totalSavings;
+            }
+      }else {
+            return "invalid input";
+      }
+}
