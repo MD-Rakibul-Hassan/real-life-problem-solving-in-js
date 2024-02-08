@@ -16,14 +16,15 @@ function checkName(name) {
       if (typeof name !== "string") {
             return "invalid";
       }
-      let nameLastLetter = name[name.length -1];
-      const goodNamesLastLetters = ["A","y","i","e","o","u","w","a","Y","I","E","O","U","W"];
+      let nameLastLetter = name[name.length -1].toLowerCase();
+      const goodNamesLastLetters = ["a","y","i","e","o","u","w"];
       if (goodNamesLastLetters.includes(nameLastLetter)) {
             return "Good Name";
       }else {
          return "Bad Name";
       }
 }
+
 
 
 function deleteInvalids(array) {
@@ -38,7 +39,7 @@ function deleteInvalids(array) {
 
 
 function password(obj) {
-      if(obj && !(obj.constructor.toString().indexOf("Object") > -1)) {
+      if(obj && !(obj === Object(obj))) {
             return "invalid"
       }
       if(obj.name && obj.birthYear && obj.siteName) {
@@ -47,7 +48,7 @@ function password(obj) {
                   const siteNameFirstLetter = obj.siteName[0].toUpperCase();
                   const siteNamelastLetters = obj.siteName.slice(1);
                   const fullSiteName = siteNameFirstLetter + siteNamelastLetters;
-                  return `${fullSiteName}#${obj.name}@${obj.birthYear}`
+                  return `${fullSiteName}#${obj.name}@${obj.birthYear}`;
             }else {
                   return "invalid" 
             }
@@ -55,4 +56,5 @@ function password(obj) {
             return "invalid" 
       }
 }
+
 
